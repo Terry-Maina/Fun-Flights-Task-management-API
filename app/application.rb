@@ -63,3 +63,15 @@ class Application
         hash = JSON.parse(req.body.read)
         # check if the project ID passed in exists
         project = Project.find_by_id(hash["project_id"])
+
+        # if project id was valid move on to creating the new board
+      if project 
+        board = Board.new(name: hash["name"], project_id: hash["project_id"])
+        if board.save
+          return [200, { 'Content-Type' => 'application/json' }, [ {:message => "board successfully created", :board => board}.to_json ]]
+        else
+          return [422, { 'Content-Type' => 'application/json' }, [ {:error => "board not added. Invalid Data"}.to_json ]]
+        end #end validation of post
+      else
+        return [422, { 'Content-Type' => 'application/json' }, [ {:error => "board not added. Invalid Project Id."}.to_json ]]
+      end #if: check if project exists
