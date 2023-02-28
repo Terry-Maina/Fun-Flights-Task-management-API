@@ -93,3 +93,12 @@ class Application
             return [404, {"Content-Type" => "application/json"}, [{error: "board not found."}.to_json]]
           end #if : board exists
 
+     # boards delete (tested)
+    elsif req.path.match(/boards/) && req.delete?
+        board = Board.find_by_path(req.path, "/boards/")
+  
+        if board && board.destroy
+          return [200, {"Content-Type" => "application/json"}, [{message: "board successfully deleted", board: board}.to_json]]
+        else
+          return [404, {"Content-Type" => "application/json"}, [{error: "board not found."}.to_json]]
+        end #if : board exists & destroyed
