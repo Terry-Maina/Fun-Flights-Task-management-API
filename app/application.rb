@@ -53,4 +53,6 @@ class Application
           return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
         end #if : project exists
 
-        
+        # boards get/read (tested)
+    elsif req.path.match(/boards/) && req.get?
+        return [200, { 'Content-Type' => 'application/json' }, [ {:message => "boards successfully requested", :boards => Board.render_all_formatted_for_frontend}.to_json ]]
