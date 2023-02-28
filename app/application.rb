@@ -137,4 +137,27 @@ class Application
             return [422, {"Content-Type" => "application/json"}, [{error: "task not updated. Invalid data."}.to_json]]
           end # if: update was successful
 
-          
+        else
+            return [404, {"Content-Type" => "application/json"}, [{error: "task not found."}.to_json]]
+          end #if : task exists
+
+          # tasks delete (tested)
+    elsif req.path.match(/tasks/) && req.delete?
+        task = Task.find_by_path(req.path, "/tasks/")
+  
+        if task && task.destroy
+          return [200, {"Content-Type" => "application/json"}, [{message: "task successfully deleted", task: task}.to_json]]
+        else
+          return [404, {"Content-Type" => "application/json"}, [{error: "task not found."}.to_json]]
+        end #if : task exists & destroyed
+  
+      else
+        resp.write "Path Not Found"
+  
+      end
+  
+      resp.finish
+    end
+  
+  end
+  
