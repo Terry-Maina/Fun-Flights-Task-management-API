@@ -26,4 +26,19 @@ class Task < ActiveRecord::Base
         end
     end
 
-    
+    def self.create_new_task_with_defaults(hash)
+        name = hash["name"] ? hash["name"] : "New Task"
+        status = hash["status"] ? hash["status"] : "Not Started"
+        priority = hash["priority"] ? hash["priority"] : "Low"
+        completed = hash["completed"] ? hash["completed"] : false
+        self.new(
+            name: name,
+            due_date: hash["due_date"],
+            description: hash["description"],
+            status: status,
+            priority: priority,
+            completed: completed,
+            board_id: hash["board_id"]
+        )
+    end
+end
