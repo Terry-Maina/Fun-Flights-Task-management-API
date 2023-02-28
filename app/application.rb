@@ -42,3 +42,15 @@ class Application
         else
           return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
         end #if : project exists
+
+        # project delete
+    elsif req.path.match(/projects/) && req.delete?
+        project = Project.find_by_path(req.path, "/projects/")
+  
+        if project && project.destroy
+          return [200, {"Content-Type" => "application/json"}, [{message: "project successfully deleted", project: project}.to_json]]
+        else
+          return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
+        end #if : project exists
+
+        
