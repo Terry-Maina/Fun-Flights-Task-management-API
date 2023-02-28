@@ -89,4 +89,7 @@ class Application
             return [422, {"Content-Type" => "application/json"}, [{error: "board not updated. Invalid data."}.to_json]]
           end # if: update was successful
 
-          
+        else
+            return [404, {"Content-Type" => "application/json"}, [{error: "board not found."}.to_json]]
+          end #if : board exists
+
