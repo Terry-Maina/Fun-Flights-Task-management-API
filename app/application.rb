@@ -123,3 +123,18 @@ class Application
         else
           return [422, { 'Content-Type' => 'application/json' }, [ {:error => "task not added. Invalid Board Id."}.to_json ]]
         end #if: check if board  exists
+
+        # tasks patch/update (tested)
+    elsif req.path.match(/tasks/) && req.patch?
+        task = Task.find_by_path(req.path, "/tasks/")
+  
+        if task 
+          data = JSON.parse(req.body.read)
+  
+          if task.update(data)
+          return [200, {"Content-Type" => "application/json"}, [{message: "task successfully updated", task: task}.to_json]]
+          else
+            return [422, {"Content-Type" => "application/json"}, [{error: "task not updated. Invalid data."}.to_json]]
+          end # if: update was successful
+
+          
