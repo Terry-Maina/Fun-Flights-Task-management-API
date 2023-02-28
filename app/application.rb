@@ -56,3 +56,10 @@ class Application
         # boards get/read (tested)
     elsif req.path.match(/boards/) && req.get?
         return [200, { 'Content-Type' => 'application/json' }, [ {:message => "boards successfully requested", :boards => Board.render_all_formatted_for_frontend}.to_json ]]
+
+        # boards post/create (tested)
+    elsif req.path.match(/boards/) && req.post? 
+        # parse JSON into a readable format for my back-end
+        hash = JSON.parse(req.body.read)
+        # check if the project ID passed in exists
+        project = Project.find_by_id(hash["project_id"])
