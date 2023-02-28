@@ -26,3 +26,19 @@ class Application
         else
           return [422, { 'Content-Type' => 'application/json' }, [ {:error => "project not added"}.to_json ]]
         end #end validation of post
+
+        # projects patch/update (tested)
+    elsif req.path.match(/projects/) && req.patch?
+        project = Project.find_by_path(req.path, "/projects/")
+  
+        if project
+          data = JSON.parse(req.body.read)
+          if project.update(data)
+            return [200, {"Content-Type" => "application/json"}, [{message: "project successfully updated", project: project}.to_json]]
+          else
+            return [422, {"Content-Type" => "application/json"}, [{error: "project not updated. Invalid data."}.to_json]]
+          end
+          #if: project was updated
+        else
+          return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
+        end #if : project exists
