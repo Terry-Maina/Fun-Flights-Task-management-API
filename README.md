@@ -1,12 +1,12 @@
-# Project Task Management API
+# Fun Flights Task Management API
 
-This project management API is a simple web API where you make CRUD calls to a server to organize a project management app.
+This project management API is a simple web API where you make CRUD calls to a server to organize any project management app.
 
 [demo here]()
 
 ## Front-end Project Task Management Interface
 
-You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/Terry-Maina/project-task-management-client-side.git)
+You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/Terry-Maina/fun-flights-task-management-client-side)
 
 ## Technologies Used in API
 
@@ -39,24 +39,24 @@ bundle exec rake db:seed
 shotgun
 ```
 
-Shotgun uses port 9393 by default.
+Shotgun uses http://127.0.0.1:9393/ by default.
 
 ## Relationships within Database
 
 ### Projects
 
-- has many boards
-- has many tasks through boards
+- A project has many boards
+- A project has many tasks through boards
 
 ### Boards
 
-- belongs to a project
-- has many tasks
+- Every board belongs to a project
+- Every board has many tasks
 
 ### Tasks
 
-- belongs to a board
-- belongs to project though a board
+- Each task belongs to a board
+- Each task belongs to project though a board
 
 ## Example Calls You Can Make With API
 
@@ -72,7 +72,7 @@ You can make all CRUD calls for the projects database.
 
 #### Example: Retrieve All Projects
 
-Shows you projects and all of the tasks associated with the project
+Displays the projects and all of the tasks associated with the project
 
 ```js
 
@@ -150,8 +150,7 @@ updated_at: "2022-09-28T23:50:45.680Z"
 
 Shows you all boards and tasks associated with the project
 
-```js
-fetch('http://localhost:3000/projects/1')
+fetch('http://localhost:9393/projects/1')
       .then((res) => res.json())
       .then((data) => data.projects)
 
@@ -257,7 +256,7 @@ You can make all CRUD calls for the projects database.
 ### Example: Create a Board
 
 ```js
-fetch('http://localhost:3000/boards/', {
+fetch('http://localhost:9393/projects/boards/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -294,7 +293,7 @@ You can make all CRUD calls for the projects database.
 ### Example: Delete a Task
 
 ```js
-fetch(`http://localhost:3000/tasks/11`, {
+fetch(`http://localhost:9393/tasks/11`, {
       method: 'DELETE',
     })
 

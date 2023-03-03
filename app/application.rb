@@ -4,19 +4,19 @@ class Application
       resp = Rack::Response.new
       req = Rack::Request.new(env)
   
-      # projects get/read 
+      # get/read projects 
     if req.path.match(/projects/) && req.get? #controller interprates the request given from the front-end
 
-        #check if requesting all projects or an individual project
+        #confirm if requesting for all projects or an individual project
     if req.path.split("/projects/").length === 1 
-        # retrieve information from model and send back information to the front-end
+        # Extract information from model and send back information to the front-end
         return [200, { 'Content-Type' => 'application/json' }, [ {:message => "projects successfully requested", :projects => Project.all}.to_json(:include => :tasks) ]]
       else 
         project = Project.find_by_path(req.path, "/projects/")
         return [200, { 'Content-Type' => 'application/json' }, [ {:message => "project successfully requested", :project => project}.to_json(:include => { :boards => {:include => :tasks}}) ]]
-      end #check if all projects or specific project
+      end #confirm if all projects or specific project
 
-      # projects post/create (tested)
+      # post/create projects (tested)
     elsif req.path.match(/projects/) && req.post?
         hash = JSON.parse(req.body.read)
         project = Project.create_new_project_with_defaults(hash)
@@ -25,9 +25,9 @@ class Application
           return [200, { 'Content-Type' => 'application/json' }, [ {:message => "project successfully created", :project => project}.to_json(:include => :tasks) ]]
         else
           return [422, { 'Content-Type' => 'application/json' }, [ {:error => "project not added"}.to_json ]]
-        end #end validation of post
+        end #terminate validation of post
 
-        # projects patch/update (tested)
+        # patch/update projects (tested)
     elsif req.path.match(/projects/) && req.patch?
         project = Project.find_by_path(req.path, "/projects/")
   
@@ -38,12 +38,12 @@ class Application
           else
             return [422, {"Content-Type" => "application/json"}, [{error: "project not updated. Invalid data."}.to_json]]
           end
-          #if: project was updated
+          #check if: project was updated
         else
           return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
-        end #if : project exists
+        end #check if : project exists
 
-        # project delete
+        # delete project
     elsif req.path.match(/projects/) && req.delete?
         project = Project.find_by_path(req.path, "/projects/")
   
@@ -51,32 +51,32 @@ class Application
           return [200, {"Content-Type" => "application/json"}, [{message: "project successfully deleted", project: project}.to_json]]
         else
           return [404, {"Content-Type" => "application/json"}, [{error: "project not found."}.to_json]]
-        end #if : project exists
+        end #check if : project exists
 
-        # boards get/read (tested)
+        # get/read boards (tested)
     elsif req.path.match(/boards/) && req.get?
         return [200, { 'Content-Type' => 'application/json' }, [ {:message => "boards successfully requested", :boards => Board.render_all_formatted_for_frontend}.to_json ]]
 
-        # boards post/create (tested)
+        # post/create boards (tested)
     elsif req.path.match(/boards/) && req.post? 
-        # parse JSON into a readable format for my back-end
+        # parse JSON into a readable format for back-end
         hash = JSON.parse(req.body.read)
-        # check if the project ID passed in exists
+        # confirm if the project ID passed in exists
         project = Project.find_by_id(hash["project_id"])
 
-        # if project id was valid move on to creating the new board
+        # if the project id is valid move on to creating the new board
       if project 
         board = Board.new(name: hash["name"], project_id: hash["project_id"])
         if board.save
           return [200, { 'Content-Type' => 'application/json' }, [ {:message => "board successfully created", :board => board}.to_json ]]
         else
           return [422, { 'Content-Type' => 'application/json' }, [ {:error => "board not added. Invalid Data"}.to_json ]]
-        end #end validation of post
+        end #terminate validation of post
       else
         return [422, { 'Content-Type' => 'application/json' }, [ {:error => "board not added. Invalid Project Id."}.to_json ]]
-      end #if: check if project exists
+      end #confirm if: project exists
 
-      # boards patch/update (tested)
+      # patch/update boards (tested)
     elsif req.path.match(/boards/) && req.patch?
         board = Board.find_by_path(req.path, "/boards/")
   
@@ -87,13 +87,13 @@ class Application
            return [200, {"Content-Type" => "application/json"}, [{message: "board successfully updated", board: board}.to_json]]
           else
             return [422, {"Content-Type" => "application/json"}, [{error: "board not updated. Invalid data."}.to_json]]
-          end # if: update was successful
+          end # confirm if: update was successful
 
         else
             return [404, {"Content-Type" => "application/json"}, [{error: "board not found."}.to_json]]
-          end #if : board exists
+          end #confirm if : board exists
 
-     # boards delete (tested)
+     # delete boards (tested)
     elsif req.path.match(/boards/) && req.delete?
         board = Board.find_by_path(req.path, "/boards/")
   

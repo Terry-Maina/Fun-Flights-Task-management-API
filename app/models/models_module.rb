@@ -1,8 +1,8 @@
 module InheritMethods 
     module ClassMethods
-        def find_by_path(path, url)
+        def check_by_path(path, url)
             id = path.split(url).last.to_i 
-            find_by_id(id) #implicit self
+            check_by_id(id)
         end
     end
 end
