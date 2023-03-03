@@ -101,13 +101,13 @@ class Application
           return [200, {"Content-Type" => "application/json"}, [{message: "board successfully deleted", board: board}.to_json]]
         else
           return [404, {"Content-Type" => "application/json"}, [{error: "board not found."}.to_json]]
-        end #if : board exists & destroyed
+        end #check if : board exists & destroyed
 
-        # tasks get/read (tested)
+        # get/read tasks (tested)
     elsif req.path.match(/tasks/) && req.get?
         return [200, { 'Content-Type' => 'application/json' }, [ {:message => "tasks successfully requested", :tasks => Task.render_all_formatted_for_frontend}.to_json ]]
 
-          # tasks post/create (tested)
+          # post/create tasks post/create (tested)
     elsif req.path.match(/tasks/) && req.post?
         hash = JSON.parse(req.body.read)
         board = Board.find_by_id(hash["board_id"])
@@ -119,12 +119,12 @@ class Application
             return [200, { 'Content-Type' => 'application/json' }, [ {:message => "task successfully created", :task => task}.to_json ]]
           else
             return [422, { 'Content-Type' => 'application/json' }, [ {:error => "task not added. Invalid Data"}.to_json ]]
-          end #end validation of post
+          end #terminate validation of post
         else
           return [422, { 'Content-Type' => 'application/json' }, [ {:error => "task not added. Invalid Board Id."}.to_json ]]
-        end #if: check if board  exists
+        end #confirm if: check if board  exists
 
-        # tasks patch/update (tested)
+        #patch/update tasks patch/update (tested)
     elsif req.path.match(/tasks/) && req.patch?
         task = Task.find_by_path(req.path, "/tasks/")
   
@@ -135,13 +135,13 @@ class Application
           return [200, {"Content-Type" => "application/json"}, [{message: "task successfully updated", task: task}.to_json]]
           else
             return [422, {"Content-Type" => "application/json"}, [{error: "task not updated. Invalid data."}.to_json]]
-          end # if: update was successful
+          end # confirm if: update was successful
 
         else
             return [404, {"Content-Type" => "application/json"}, [{error: "task not found."}.to_json]]
-          end #if : task exists
+          end #confirm if : task exists
 
-          # tasks delete (tested)
+          # delete tasks (tested)
     elsif req.path.match(/tasks/) && req.delete?
         task = Task.find_by_path(req.path, "/tasks/")
   
@@ -149,7 +149,7 @@ class Application
           return [200, {"Content-Type" => "application/json"}, [{message: "task successfully deleted", task: task}.to_json]]
         else
           return [404, {"Content-Type" => "application/json"}, [{error: "task not found."}.to_json]]
-        end #if : task exists & destroyed
+        end # confirm if : task exists & destroyed
   
       else
         resp.write "Path Not Found"
@@ -161,17 +161,22 @@ class Application
   
   end
 
-  # GET /projects - get all project
-# PUT /projects - create new project
-# PATCH /project/:id - update project name
-# DELETE /project/:id - delete project (maybe also delete all boards and tasks associated)
+
+  # GET /tasks - get all tasks associated with board
+# PUT /tasks - create new task within board
+# PATCH /tasks/:id - update task
+# DELETE /tasks/:id - delete task
+
+ 
 
 # GET /boards - get all boards associated to project
 # PUT /boards - create new board within project
 # PATCH /boards/:id - update board name
 # DELETE /boards/:id - delete board (maybe also delete all tasks associated)
 
-# GET /tasks - get all tasks associated with board
-# PUT /tasks - create new task within board
-# PATCH /tasks/:id - update task
-# DELETE /tasks/:id - delete task
+
+ # GET /projects - get all project
+# PUT /projects - create new project
+# PATCH /project/:id - update project name
+# DELETE /project/:id - delete project (maybe also delete all boards and tasks associated)
+

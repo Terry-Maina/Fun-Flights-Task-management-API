@@ -60,8 +60,6 @@ Shotgun uses http://127.0.0.1:9393/ by default.
 
 ## Example of screenshot Calls You Can Make With API
 
-<img width="544" alt="Screenshot 2023-03-03 at 03 03 54" src="https://user-images.githubusercontent.com/108924130/222644328-65289567-f2c2-4d42-890b-9cf018eac7b0.png">
-
 
 ### Projects
 
@@ -72,6 +70,8 @@ You can make all CRUD calls for the projects database.
 - GET/RETRIEVE individual project
 - DELETE a project
 - UPDATE a project
+
+- link <img width="544" alt="Screenshot 2023-03-03 at 03 03 54" src="https://user-images.githubusercontent.com/108924130/222644328-65289567-f2c2-4d42-890b-9cf018eac7b0.png">
 
 #### Example: Retrieve All Projects
 
