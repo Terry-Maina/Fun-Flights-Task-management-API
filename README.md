@@ -58,7 +58,10 @@ Shotgun uses http://127.0.0.1:9393/ by default.
 - Each task belongs to a board
 - Each task belongs to project though a board
 
-## Example Calls You Can Make With API
+## Example of screenshot Calls You Can Make With API
+
+<img width="544" alt="Screenshot 2023-03-03 at 03 03 54" src="https://user-images.githubusercontent.com/108924130/222644328-65289567-f2c2-4d42-890b-9cf018eac7b0.png">
+
 
 ### Projects
 
