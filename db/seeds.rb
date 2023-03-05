@@ -50,18 +50,18 @@ client3.save
 
 puts "Seeding tasks..."
 client3_todo.tasks.build(
-    name: 'Homepage WK40',
-    due_date: Date.new(2021,10,1),
-    description: '',
+    name: 'classes',
+    due_date: Date.new(2022,10,1),
+    description: 'study a chapter a day',
     status: 'Not Started',
     priority: 'Medium',
     completed: false
 )
 
 client3_todo.tasks.build(
-    name: 'Flyout Images',
-    due_date: Date.new(2021,10,1),
-    description: '',
+    name: 'Flights',
+    due_date: Date.new(2022,10,1),
+    description: 'order of flights',
     status: 'Not Started',
     priority: 'Low',
     completed: false
@@ -69,9 +69,9 @@ client3_todo.tasks.build(
 
 
 client3_todo.tasks.build(
-    name: 'Banner - B3JBQ - Free Shipping on 59',
-    due_date: Date.new(2021,10,1),
-    description: 'Global Banner - B3JBQ - Free Shipping on 59\nGlobal Disclaimer -  B3JBQ - Free Shipping on 59\nCheckout Banner - B3JBQ - Free Shipping on 59',
+    name: 'audit HR',
+    due_date: Date.new(2022,10,1),
+    description: 'audit Hr department',
     status: 'Not Started',
     priority: 'High',
     completed: false
@@ -82,7 +82,7 @@ client3_todo.save
 
 client3_completed.tasks.build(
     name: 'Homepage Clickmap Changes',
-    due_date: Date.new(2021,9,29),
+    due_date: Date.new(2022,9,29),
     description: '',
     status: 'Complete',
     priority: 'Medium',
@@ -94,27 +94,27 @@ client3_completed.save
 
 
 client4_todo.tasks.build(
-    name: 'Homepage Fall 3 WK40',
-    due_date: Date.new(2021,10,1),
-    description: '',
+    name: 'Audit',
+    due_date: Date.new(2022,10,1),
+    description: 'Audit the finance department',
     status: 'Not Started',
     priority: 'High',
     completed: false
 )
 
 client4_todo.tasks.build(
-    name: 'Banner - A21M3 - Up To 25 Off Sweaters Pants FSH 79',
-    due_date: Date.new(2021,10,4),
-    description: 'Global Banner - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nGlobal Disclaimer - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nClothing - Flyout Offer - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nTops - Flyout Offer - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nCoupons - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nDaily Offers - A21M3 - Up To 25 Off Sweaters Pants FSH 79\nHomePage - Banner - A21M3 - Up To 25 Off Sweaters Pants FSH 79',
+    name: 'Audit',
+    due_date: Date.new(2022,10,4),
+    description: 'perform audit in the quality assurance department',
     status: 'Not Started',
     priority: 'Medium',
     completed: false
 )
 
 client4_todo.tasks.build(
-    name: 'Banner - APPLE - 30 Off FSH 79',
-    due_date: Date.new(2021,10,7),
-    description: 'Global Banner - APPLE - 30 Off FSH 79\nGlobal Disclaimer - APPLE - 30 Off FSH 79\nClothing - Flyout Offer - APPLE - 30 Off FSH 79\nTops - Flyout Offer - APPLE - 30 Off FSH 79\nCoupons - APPLE - 30 Off FSH 79\nDaily Offers - APPLE - 30 Off FSH 79\nHomePage - Banner - APPLE - 30 Off FSH 79',
+    name: 'OSHA',
+    due_date: Date.new(2022,10,7),
+    description: 'Train new staff on safety within the airport',
     status: 'Not Started',
     priority: 'High',
     completed: false
@@ -124,36 +124,36 @@ client4_todo.save
 
 
 client1_todo.tasks.build(
-    name: 'Banner - Banner - DD994 - 25 Dollars Off 100 FSH 100',
-    due_date: Date.new(2021,9,29),
-    description: 'promo code only\nBanner - Banner - DD994 - 25 Dollars Off 100 FSH 100\nGlobal Disclaimer - Banner - DD994 - 25 Dollars Off 100 FSH 100\nHomepage - Banner - DD994 - 25 Dollars Off 100 FSH 100',
+    name: 'meeting briefs',
+    due_date: Date.new(2022,9,29),
+    description: 'update on progress',
     status: 'Complete',
     priority: 'High',
     completed: true
 )
 
 client1_todo.tasks.build(
-    name: 'Banner - DND139 - 25 Off 100 FSH 100',
-    due_date: Date.new(2021,9,29),
-    description: 'promo code only\nGlobal Banner - Banner - DND139 - 25 Off 100 FSH 100\nGlobal Disclaimer - Banner - DND139 - 25 Off 100 FSH 100\nHomepage - Banner - DND139 - 25 Off 100 FSH 100',
+    name: 'sales flights',
+    due_date: Date.new(2022,9,29),
+    description: 'visit tv stations to improve sales',
     status: 'In Progress',
     priority: 'High',
     completed: false
 )
 
 client1_todo.tasks.build(
-    name: 'Promo Code TEST',
-    due_date: Date.new(2021,9,30),
-    description: 'Global Banner - Banner - TEST - In Monetate\nGlobal Disclaimer - Banner - DND142 - 25 Dollars Off 100 FSH 100\nGlobal Disclaimer - Banner - DND141 - 25 Off 100 FSH 100\nGlobal Banner - Banner - TEST - In Monetate',
+    name: 'Promotion for products',
+    due_date: Date.new(2022,9,30),
+    description: 'go out and reach out to potentiat target group',
     status: 'In Progress',
     priority: 'High',
     completed: false
 )
 
 client1_todo.tasks.build(
-    name: 'Workspace for Test',
-    due_date: Date.new(2021,9,30),
-    description: '',
+    name: 'Driving Test',
+    due_date: Date.new(2022,9,30),
+    description: 'driving school lessons',
     status: 'Not Started',
     priority: 'Low',
     completed: false

@@ -6,7 +6,7 @@ This project management API is a simple web API where you make CRUD calls to a s
 
 ## Front-end Project Task Management Interface
 
-You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/Terry-Maina/fun-flights-task-management-client-side)
+You can use this API in conjunction with my front-end project management app [see the repo](https://github.com/Terry-Maina/fun-flights-Task-Management-client-side.git)
 
 ## Technologies Used in API
 
@@ -71,7 +71,7 @@ You can make all CRUD calls for the projects database.
 - DELETE a project
 - UPDATE a project
 
-- link <img width="544" alt="Screenshot 2023-03-03 at 03 03 54" src="https://user-images.githubusercontent.com/108924130/222644328-65289567-f2c2-4d42-890b-9cf018eac7b0.png">
+- link <img width="544" alt="Screenshot 2023-03-03 at 03 03 54" src="https://user-images.githubusercontent.com/108924130/222663259-fc54e2fb-f468-41db-9258-8d4ebbcbc2fb.png">
 
 #### Example: Retrieve All Projects
 
